@@ -1,4 +1,4 @@
-# Simple Animation with Pygame, Julian Guevara, 1/25/22, 2:45pm, v0.5
+# Simple Animation with Pygame, Julian Guevara, 1/27/22, 2:30pm, v0.6
 
 from _typeshed import ReadableBuffer
 import pygame, sys, time
@@ -40,3 +40,20 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+
+    windowSurface.fill(white)
+
+    for b in boxes:
+        # Move the box data structure.
+        if b['dir'] == downleft:
+            b['rect'].left -= movespeed
+            b['rect'].top += movespeed
+            if b['dir'] == downright:
+                b['rect'].left += movespeed
+                b['rect'].top += movespeed
+                if b['dir'] == upleft:
+                    b['rect'].left -= movespeed
+                    b['rect'].top -= movespeed
+                    if b['dir']  == upright:
+                        b['rect'].left += movespeed
+                        b['rect'].top -= movespeed
